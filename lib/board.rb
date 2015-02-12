@@ -12,12 +12,12 @@ attr_accessor :grid
     ]
 end
 
-  def length
-    7
-  end
+  # def length
+  #   7
+  # end
 
-  def height
-    6
-  end
+  # def height
+  #   6
+  # end
 
 end
