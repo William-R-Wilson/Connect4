@@ -9,9 +9,25 @@ describe "Board" do
     expect(board.height).to eq 6
   end
 
-  # it "you can place and find things on the board" do
+  it "places tokens on the board" do
+    board = Board.new({height: 6, length: 7})
+    board.drop(1,"x")
+    expect(board.grid[5][0]).to eq "x"
+  end
+
+
+  #it "draws the board" do
+ # end
+
+  # it "can place and find things on the board" do
   #   board = Board.new
   #   board.grid[0][6] = "X"
   #   expect(board.grid[0][6]).to eq "X"
   # end
+
+
+  #it "can find things on the board" do
+  #end
 end
+
+
