@@ -12,7 +12,7 @@ describe "Board" do
   it "places tokens on the board" do
     board = Board.new({height: 6, length: 7})
     board.drop(1,"x")
-    expect(board.grid[5][0]).to eq "x"
+    expect(board.grid[0][5]).to eq "x"
   end
 
 
