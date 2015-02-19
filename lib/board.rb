@@ -14,15 +14,12 @@ class Board
 
     actual_column = column - 1
     row = last_empty(actual_column)
-    # binding.pry
     @grid[actual_column][row] = token
 
   end
 
   def last_empty(actual_column)
     last_empty_index = 0
-    binding.pry
-
     @grid[actual_column].to_enum.with_index.reverse_each do |e, i|
       if e == ""
         last_empty_index = i
