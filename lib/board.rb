@@ -1,3 +1,5 @@
+require 'terminal-table'
+
 
 class Board
   require 'pry'
@@ -9,6 +11,9 @@ class Board
     @height = args[:height]
     @grid = Array.new(@length) { Array.new(@height, "") }
   end
+
+
+
 
   def drop(column, token)
 
@@ -29,9 +34,22 @@ class Board
     last_empty_index
   end
 
+  def render
+    representation = []
+    @grid.each do |e| 
+      representation << e 
+      representation << :separator
+    end
+    drawing = Terminal::Table.new :headings => ['A', 'B', 'C', 'D', 'E', 'F'], :rows => representation
+    drawing.to_s+"\n"
+  end
 
 end
 
 # board = Board.new({height: 6, length: 7})
 # puts board.grid.drop(1, "x")
+# 
+
+#board = Board.new({height: 6, length: 7})
+#board.render
 

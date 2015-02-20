@@ -7,9 +7,11 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     slop (3.6.0)
+    terminal-table (1.4.5)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   pry
+  terminal-table
