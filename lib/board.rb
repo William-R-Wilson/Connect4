@@ -23,9 +23,10 @@ class Board
 
   end
 
+
   def last_empty(actual_column)
     last_empty_index = 0
-    @grid[actual_column].to_enum.with_index.reverse_each do |e, i|
+    @grid[actual_column].reverse_each_with_index do |e, i|
       if e == ""
         last_empty_index = i
         break
@@ -53,3 +54,10 @@ end
 #board = Board.new({height: 6, length: 7})
 #board.render
 
+
+class Array
+
+def reverse_each_with_index &block
+  to_enum.with_index.reverse_each &block
+end
+end
