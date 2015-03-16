@@ -1,5 +1,5 @@
 require 'terminal-table'
-
+#require_relative "game.rb"
 
 class Board
   require 'pry'
@@ -11,9 +11,6 @@ class Board
     @height = args[:height]
     @grid = Array.new(@length) { Array.new(@height, "") }
   end
-
-
-
 
   def drop(column, token)
 
@@ -37,8 +34,8 @@ class Board
 
   def render
     representation = []
-    @grid.each do |e| 
-      representation << e 
+    @grid.each do |e|
+      representation << e
       representation << :separator
     end
     drawing = Terminal::Table.new :headings => ['A', 'B', 'C', 'D', 'E', 'F'], :rows => representation
@@ -47,17 +44,17 @@ class Board
 
 end
 
-# board = Board.new({height: 6, length: 7})
-# puts board.grid.drop(1, "x")
-# 
 
-#board = Board.new({height: 6, length: 7})
-#board.render
 
 
 class Array
 
-def reverse_each_with_index &block
-  to_enum.with_index.reverse_each &block
+  def reverse_each_with_index &block
+    to_enum.with_index.reverse_each &block
+  end
 end
-end
+
+
+#testing code creates a board and renders to stdout
+#board = Board.new({height: 6, length: 7})
+#puts board.render
