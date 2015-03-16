@@ -22,15 +22,17 @@ class Game
   def get_name
     puts "enter player's name"
     print ">>"
-    gets.chomp
+    STDIN.gets.chomp
   end
 
   def commence
+    print @board.render
     current_player = @player1
     while !won? do
+      print @board.render
       puts "place your token #{current_player}"
-      board.drop(gets.chomp, current_player.to_s)
-      currentplayer = current_player == @player1 ? @player2 : @player1
+      board.drop(STDIN.gets.chomp, current_player.to_s)
+      current_player = current_player == @player1 ? @player2 : @player1
     end
   end
 end

@@ -13,11 +13,9 @@ class Board
   end
 
   def drop(column, token)
-
-    actual_column = column - 1
+    actual_column = (column.to_i - 1)
     row = last_empty(actual_column)
     @grid[actual_column][row] = token
-
   end
 
 
@@ -38,7 +36,7 @@ class Board
       representation << e
       representation << :separator
     end
-    drawing = Terminal::Table.new :headings => ['A', 'B', 'C', 'D', 'E', 'F'], :rows => representation
+    drawing = Terminal::Table.new :headings => ['1', '2', '3', '4', '5', '6'], :rows => representation
     drawing.to_s+"\n"
   end
 
