@@ -26,7 +26,6 @@ class Game
   end
 
   def commence
-    print @board.render
     current_player = @player1
     while !won? do
       print @board.render
@@ -37,4 +36,4 @@ class Game
   end
 end
 
-game = Game.new
+

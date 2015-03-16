@@ -49,6 +49,36 @@ EOF
   expect(board.render).to eq(example_rendering)
 end
 
+it "renders droped tokens vertically" do
+    example_rendering  =<<EOF
++---+---+---+---+---+---+
+| 1 | 2 | 3 | 4 | 5 | 6 |
++---+---+---+---+---+---+
+
++---+---+---+---+---+---+
+
++---+---+---+---+---+---+
+
++---+---+---+---+---+---+
+
++---+---+---+---+---+---+
+|   |   |   |   |   | X |
++---+---+---+---+---+---+
+|   |   |   |   |   | O |
++---+---+---+---+---+---+
+|   |   |   |   |   | X |
++---+---+---+---+---+---+
++---+---+---+---+---+---+
+EOF
+
+
+  board = Board.new({height: 6, length: 7})
+  board.drop(6,"X")
+  board.drop(6,"O")
+  board.drop(6,"X")
+  expect(board.render).to eq(example_rendering)
+end
+
   # it "can place and find things on the board" do
   #   board = Board.new
   #   board.grid[0][6] = "X"
