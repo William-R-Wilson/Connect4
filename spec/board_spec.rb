@@ -78,7 +78,25 @@ EOF
     expect{@board.drop("a", "x")}.to raise_error(ArgumentError)
   end
 
+it "game is not won at the outset" do
+  expect(@board.won).to eq(false)
+end
 
+it "game is won with 4 in a row vertically" do
+    @board.drop(6,"X")
+    @board.drop(6,"X")
+    @board.drop(6,"X")
+    @board.drop(6,"X")
+    expect(@board.won?).to eq(true)
+end
+
+it "game is won with 4 in a row horizontally" do
+    @board.drop(1,"O")
+    @board.drop(2,"O")
+    @board.drop(3,"O")
+    @board.drop(4,"O")
+    expect(@board.won?).to eq(true)
+end
 
   # it "can place and find things on the board" do
   #   board = Board.new

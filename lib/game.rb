@@ -33,7 +33,7 @@ class Game
       begin
       board.drop(STDIN.gets.chomp.to_i, current_player.to_s)
     rescue ArgumentError
-      puts "Please enter a number between 1 and 7"
+      puts "Please enter a number between 1 and #{@board.length}"
       next
     end
       current_player = current_player == @player1 ? @player2 : @player1

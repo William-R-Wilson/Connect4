@@ -16,9 +16,8 @@ class Board
 
   def drop(slot, token)
     valid_range = (1..@length).to_a
-    if !valid_range.include?(slot)
-      raise ArgumentError
-    end
+    raise ArgumentError if !valid_range.include?(slot)
+
    i = @height
 	 until i == 0
 	  if @grid[i-1][slot-1] == ""
