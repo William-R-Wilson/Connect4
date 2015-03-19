@@ -9,25 +9,34 @@ class Board
   def initialize(args)
     @length = args[:length]
     @height = args[:height]
-    @grid = Array.new(@length) { Array.new(@height, "") }
-  end
-
-  def drop(column, token)
-    actual_column = (column.to_i - 1)
-    row = last_empty(actual_column)
-    @grid[actual_column][row] = token
+    @grid = Array.new(@height) { Array.new(@length, "") }
+    
   end
 
 
-  def last_empty(actual_column)
-    last_empty_index = 0
-    @grid[actual_column].reverse_each_with_index do |e, i|
-      if e == ""
-        last_empty_index = i
-        break
+  def drop(slot, token) 
+   i = @height
+	 until i == 0
+	  if @grid[i-1][slot-1] == ""
+		  @grid[i-1][slot-1] = token
+		  break
+		else
+		  i -= 1
+	  end
+	 end
+  end
+
+
+  def last_empty(actual_column, token)
+    i = @height
+    puts i.class
+    actual_column.each do
+      if actual_column[i] == ""
+        actual_column[i] = token
+      else
+        i - 1
       end
     end
-    last_empty_index
   end
 
   def render
@@ -36,7 +45,7 @@ class Board
       representation << e
       representation << :separator
     end
-    drawing = Terminal::Table.new :headings => ['1', '2', '3', '4', '5', '6'], :rows => representation
+    drawing = Terminal::Table.new :headings => ['1', '2', '3', '4', '5', '6', '7'], :rows => representation
     drawing.to_s+"\n"
   end
 
@@ -45,14 +54,6 @@ end
 
 
 
-class Array
-
-  def reverse_each_with_index &block
-    to_enum.with_index.reverse_each &block
-  end
-end
 
 
-#testing code creates a board and renders to stdout
-#board = Board.new({height: 6, length: 7})
-#puts board.render
+
