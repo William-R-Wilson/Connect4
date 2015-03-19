@@ -10,8 +10,7 @@ class Game
   def initialize
     @player1 = "X"
     @player2 = "O"
-    @board = Board.new(height: 6, length: 7) #needs to be reversed
-    #
+    @board = Board.new(height: 6, length: 7) 
     commence
   end
 
