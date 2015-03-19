@@ -74,12 +74,12 @@ EOF
   end
 
   it "raises an error if player gives invalid input" do
-    expect(@board.drop(9, "x")).to eq("Please enter a number between 1 and 7")
-    expect(@board.drop("a", "x")).to eq("Please enter a number between 1 and 7")
+    expect{@board.drop(9, "x")}.to raise_error(ArgumentError)
+    expect{@board.drop("a", "x")}.to raise_error(ArgumentError)
   end
-  
-  
-  
+
+
+
   # it "can place and find things on the board" do
   #   board = Board.new
   #   board.grid[0][6] = "X"

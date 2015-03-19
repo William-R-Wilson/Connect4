@@ -10,11 +10,15 @@ class Board
     @length = args[:length]
     @height = args[:height]
     @grid = Array.new(@height) { Array.new(@length, "") }
-    
+
   end
 
 
-  def drop(slot, token) 
+  def drop(slot, token)
+    valid_range = (1..@length).to_a
+    if !valid_range.include?(slot)
+      raise ArgumentError
+    end
    i = @height
 	 until i == 0
 	  if @grid[i-1][slot-1] == ""
