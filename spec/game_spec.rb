@@ -1,7 +1,7 @@
 #require "board.rb"
 require "rspec"
-require "player.rb"
-require "game.rb"
+#require_relative "player"
+require "game"
 
 
 describe "Game" do
@@ -18,23 +18,23 @@ describe "Game" do
     expect(game.won?).to eq(false)
   end
 
-  it "game is won with 4 in a row vertically" do
+  it "is won with 4 in a row vertically" do
     game = Game.new
     game.board.drop(6,"X")
     game.board.drop(6,"X")
     game.board.drop(6,"X")
     game.board.drop(6,"X")
-    expect(game.won?).to be true
-end
+    expect(game.won?).to eq(true)
+  end
 
-it "game is won with 4 in a row horizontally" do
+  it "is won with 4 in a row horizontally" do
     game = Game.new
     game.board.drop(1,"X")
     game.board.drop(2,"X")
     game.board.drop(3,"X")
     game.board.drop(4,"X")
-    expect(game.won?).to be true
-end
+    expect(game.won?).to eq(true)
+  end
 
 
 

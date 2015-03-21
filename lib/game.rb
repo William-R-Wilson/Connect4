@@ -1,9 +1,12 @@
 
-require_relative 'board.rb'
+require_relative 'board'
 #require './player'
+require_relative 'GameLogic'
 
 
 class Game
+  
+  include GameLogic
   require "pry"
 
   attr_accessor :player1, :player2, :board, :won
@@ -27,8 +30,8 @@ class Game
 
   def commence
     current_player = @player1
-    print @board.render
     until won? == true do
+      print @board.render
       puts "place your token #{current_player}"
       begin
       board.drop(STDIN.gets.chomp.to_i, current_player.to_s)
@@ -37,31 +40,12 @@ class Game
       next
       end
       analyze_board
-      print @board.render
       current_player = current_player == @player1 ? @player2 : @player1
     end
-  end
-  
-  def analyze_board
-    @board.grid.each do |row|
-      a = row.join
-      
-      if a.include? "XXXX"
-        @won = true
-        puts "X Wins!"
-        return @won
-        
-      elsif a.include? "OOOO"
-        @won = true
-        puts "O Wins!"
-        return @won
-      else
-        @won = false
-      end
-    end
+    ask_to_finish
     
   end
-
+  
 end
 
 =begin
